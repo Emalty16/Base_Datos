@@ -1,42 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package sc404.proyect_basededatos.datos;
 
 /**
- *
- * @author usuario
+ * * * @author usuario
  */
 public class Usuario {
-    
-    private int idCorreoUsuario;
+
+    private String CorreoUsuario;
     private int cedula;
     private String nombre;
     private String apellido;
     private String vivienda;
-    private String contra;
+    private String contrasena;
 
     public Usuario() {
     }
 
-    
-    
-    public Usuario(int idCorreoUsuario, int cedula, String nombre, String apellido, String vivienda, String contra) {
-        this.idCorreoUsuario = idCorreoUsuario;
+    public Usuario(String CorreoUsuario, int cedula, String nombre, String apellido, String vivienda, String contrasena) {
+        this.CorreoUsuario = CorreoUsuario;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.vivienda = vivienda;
-        this.contra = contra;
+        this.contrasena = contrasena;
     }
 
-    public int getIdCorreoUsuario() {
-        return idCorreoUsuario;
+    public String getCorreoUsuario() {
+        return CorreoUsuario;
     }
 
-    public void setIdCorreoUsuario(int idCorreoUsuario) {
-        this.idCorreoUsuario = idCorreoUsuario;
+    public void setCorreoUsuario(String CorreoUsuario) {
+        this.CorreoUsuario = CorreoUsuario;
     }
 
     public int getCedula() {
@@ -71,15 +64,11 @@ public class Usuario {
         this.vivienda = vivienda;
     }
 
-    public String getContra() {
-        return contra;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContra(String contra) {
-        this.contra = contra;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
-    
-    
-    
-    
 }

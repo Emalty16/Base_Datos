@@ -1,12 +1,18 @@
 package sc404.proyect_basededatos.interfaz;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import sc404.proyect_basededatos.logica.conexion;
 
 public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        
+
         this.getRootPane().setDefaultButton(btn_Ingresar);
     }
 
@@ -14,12 +20,16 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         lbl_Usuario = new javax.swing.JLabel();
         lbl_Password = new javax.swing.JLabel();
         btn_Ingresar = new javax.swing.JButton();
         btn_Salir = new javax.swing.JButton();
         txt_Usuario = new javax.swing.JTextField();
         txt_Password = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio de sesion");
@@ -44,6 +54,19 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        txt_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_UsuarioActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Registrarse");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,13 +81,15 @@ public class Login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_Usuario)
-                            .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(69, 69, 69))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addComponent(btn_Ingresar)
-                        .addGap(62, 62, 62)
-                        .addComponent(btn_Salir)))
-                .addGap(69, 69, 69))
+                        .addGap(57, 57, 57)
+                        .addComponent(btn_Salir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                        .addComponent(jButton2)
+                        .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -77,43 +102,54 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lbl_Password)
                     .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_Ingresar)
-                    .addComponent(btn_Salir))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(btn_Salir)
+                    .addComponent(jButton2))
+                .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
-        
-        String nombreUsuario =txt_Usuario.getText();
+
+        String usuario = txt_Usuario.getText();
         String password = new String(txt_Password.getPassword());
-             
-        if(nombreUsuario.length() ==0 || (password.length() ==0)){
+
+        if (usuario.length() == 0 || (password.length() == 0)) {
             JOptionPane.showMessageDialog(null, "Debe digitar el nombre de usuario y la contraseña para ingresar");
-            
+
             //Salir del metodo
             return;
-        }
-        if((nombreUsuario.equals("Admin")) && (password.equals("123"))){
-            this.dispose();        
-            Inicio obj = new Inicio();
-            obj.setLocationRelativeTo(null);
-            obj.setVisible(true);
-        } else{
-            
-            JOptionPane.showMessageDialog(null, "Los credenciales no son validos, repita de nuevo");
-        }
+        } else {
         
+            conexion con = new conexion();
+            
+            if (con.Login(usuario, password) == 1) {
+                
+                inicio.setVisible(true);
+                this.setVisible(false);          
+            }
+        }
+       
     }//GEN-LAST:event_btn_IngresarActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
-        
+
         this.dispose();
     }//GEN-LAST:event_btn_SalirActionPerformed
+
+    private void txt_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_UsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_UsuarioActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Registro registrarse = new Registro();
+        registrarse.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,16 +165,28 @@ public class Login extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -146,7 +194,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                L.setVisible(true);
             }
         });
     }
@@ -154,9 +202,15 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Ingresar;
     private javax.swing.JButton btn_Salir;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lbl_Password;
     private javax.swing.JLabel lbl_Usuario;
     private javax.swing.JPasswordField txt_Password;
     private javax.swing.JTextField txt_Usuario;
     // End of variables declaration//GEN-END:variables
+
+    public static Login L = new Login();
+    public static Inicio inicio = new Inicio();
 }
+

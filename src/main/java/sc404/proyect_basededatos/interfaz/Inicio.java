@@ -4,6 +4,8 @@
  */
 package sc404.proyect_basededatos.interfaz;
 
+import sc404.proyect_basededatos.datos.Actividad;
+
 /**
  *
  * @author usuario
@@ -26,24 +28,31 @@ public class Inicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Cita = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        fileActividades = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Recycle with Me");
         setBackground(new java.awt.Color(0, 204, 255));
 
-        jMenu1.setText("File");
+        jMenu1.setText("Inicio");
 
         Cita.setText("Cita");
         Cita.addActionListener(new java.awt.event.ActionListener() {
@@ -54,15 +63,35 @@ public class Inicio extends javax.swing.JFrame {
         jMenu1.add(Cita);
 
         jMenuItem1.setText("Punto de Reciclaje");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Actividades");
-        jMenu1.add(jMenuItem2);
+        fileActividades.setText("Actividades");
+        fileActividades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileActividadesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(fileActividades);
 
         jMenuItem3.setText("Empresa");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setText("Usuario");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuItem7.setText("Salir");
@@ -72,6 +101,14 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem7);
+
+        jMenuItem2.setText("Volver a Login");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
@@ -84,8 +121,6 @@ public class Inicio extends javax.swing.JFrame {
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Cerrar");
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -106,6 +141,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void CitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CitaActionPerformed
         // TODO add your handling code here:
+        Cita c = new Cita();
+        c.setLocationRelativeTo(null);
+        c.setVisible(true);
     }//GEN-LAST:event_CitaActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -113,6 +151,49 @@ public class Inicio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void fileActividadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileActividadesActionPerformed
+        Actividades acti = new Actividades();
+        acti.setVisible(true);
+        acti.setLocationRelativeTo(null);
+    }//GEN-LAST:event_fileActividadesActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        
+        puntoReciclaje reci = new puntoReciclaje();
+        reci.setLocationRelativeTo(null);
+        reci.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here
+        this.dispose();
+        close_sesion();
+        
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        Empresa empre = new Empresa();
+        empre.setLocationRelativeTo(null);
+        empre.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    
+    public static void close_sesion (){
+        
+        Login sesion = new Login();      
+        sesion.setTitle("Inicio de Sesión");
+        sesion.setLocationRelativeTo(null);
+        sesion.setVisible(true);
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -150,6 +231,9 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Cita;
+    private javax.swing.JMenuItem fileActividades;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -162,4 +246,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     // End of variables declaration//GEN-END:variables
+
+    Actividades actividad = new Actividades();
+    Cita cita = new Cita();
+    Empresa empresa = new Empresa();
+    puntoReciclaje punto = new puntoReciclaje();
 }
